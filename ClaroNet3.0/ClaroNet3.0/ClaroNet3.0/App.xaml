@@ -4,8 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:infra="clr-namespace:ClaroNet3.Insfrastructure"
              x:Class="ClaroNet3._0.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <infra:InstanceLocator  x:Key="Locator"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

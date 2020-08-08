@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaroNet3.0.Android", "ClaroNet3.0\ClaroNet3.0.Android\ClaroNet3.0.Android.csproj", "{81CDE9C4-CACB-45C5-A8C0-B539E9176455}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaroNet3_0.Android", "ClaroNet3.0\ClaroNet3.0.Android\ClaroNet3_0.Android.csproj", "{81CDE9C4-CACB-45C5-A8C0-B539E9176455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaroNet3.0", "ClaroNet3.0\ClaroNet3.0\ClaroNet3.0.csproj", "{2069B1BE-9DB3-446C-A4F3-CA04E6B2E459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClaroNet3", "ClaroNet3.0\ClaroNet3.0\ClaroNet3.csproj", "{2069B1BE-9DB3-446C-A4F3-CA04E6B2E459}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
