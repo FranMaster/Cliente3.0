@@ -54,7 +54,12 @@
                                 TextColor="White"
                                 FontSize="Large" 
                                 FontAttributes="Bold"
-                                Command="{Binding btnLogin}"/>
+                                Command="{Binding BtnLogIn}"/>
+                            <Button 
+                                Text="Trabajar sin Conexión" 
+                                CornerRadius="15"
+                                TextColor="White"                     
+                                Command="{Binding BtnLogInNoConect}"/>
                         </StackLayout>
                     </Frame>
 

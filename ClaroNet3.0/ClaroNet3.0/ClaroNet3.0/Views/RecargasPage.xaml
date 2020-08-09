@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              BackgroundImageSource="fondo"
              x:Class="ClaroNet3.Views.RecargasPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
              >
     <ContentPage.Content>
         <Grid BindingContext="{Binding Recargas}">              
@@ -79,7 +80,7 @@
                                 </Frame>
                                 <Button Text="Realiza Carga" CornerRadius="15" BackgroundColor="red"
                             TextColor="White" FontSize="Medium" FontAttributes="Bold"
-                                    Command="{Binding btnRecargar}"/>
+                                    Command="{Binding BtnRecarga}"/>
                             </StackLayout>
                         </Frame>
                     </Grid>

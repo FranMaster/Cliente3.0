@@ -12,7 +12,7 @@ namespace ClaroNet3._0
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MasterPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

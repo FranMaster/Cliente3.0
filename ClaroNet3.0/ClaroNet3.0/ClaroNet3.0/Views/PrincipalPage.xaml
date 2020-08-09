@@ -7,8 +7,9 @@
              xmlns:local="clr-namespace:ClaroNet3.Views"
               BarBackgroundColor="Red"
              SelectedTabColor="White" 
-            UnselectedTabColor="White"
+             UnselectedTabColor="White"    
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
              x:Class="ClaroNet3.Views.PrincipalPage">
     <local:RecargasPage Title="Recarga" IconImageSource="telephone"/>  
-    <local:RecargasPage Title="Listado" IconImageSource="stats"/>  
+    <!--<local:RecargasPage Title="Listado" IconImageSource="stats"/>-->  
 </TabbedPage>
