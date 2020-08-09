@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ClaroNet3.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterPage : ContentPage
+    public partial class MasterPage : MasterDetailPage
     {
-        public MaterPage()
+        public MasterPage()
         {
             InitializeComponent();
         }

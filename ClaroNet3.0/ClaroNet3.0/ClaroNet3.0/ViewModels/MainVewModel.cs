@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ClaroNet3.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace ClaroNet3.ViewModels
@@ -7,13 +9,15 @@ namespace ClaroNet3.ViewModels
     public class MainVewModel
     {
         #region Properties
-        public LoginViewModel Login { get; set; } 
+        public LoginViewModel Login { get; set; }
+        public ObservableCollection<ItemMenuModel> Menu { get; set; }
         #endregion
 
         #region Constructor
         public MainVewModel()
         {
             Login = new LoginViewModel();
+            LoadMenu();
         }
         #endregion
 
@@ -33,5 +37,13 @@ namespace ClaroNet3.ViewModels
         } 
         #endregion
 
+
+        public void LoadMenu()
+        {
+            Menu = new ObservableCollection<ItemMenuModel>
+            {
+                new ItemMenuModel{Icon="userImg",Title="Login"}
+            };
+        }
     }
 }

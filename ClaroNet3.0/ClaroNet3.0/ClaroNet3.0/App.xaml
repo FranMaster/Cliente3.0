@@ -9,6 +9,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <infra:InstanceLocator  x:Key="Locator"/>
+            <!-- Pallete -->
+            <Color x:Key="primary-back-title-color">Red</Color>
+            <Color x:Key="primary-title-color">White</Color>
+            <!-- Pallete-end -->
+            <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Key=primary-back-title-color}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource Key=primary-title-color}"/>
+            </Style>
         </ResourceDictionary>
+      
     </Application.Resources>
 </Application>
