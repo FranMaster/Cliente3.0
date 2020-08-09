@@ -4,7 +4,15 @@ using System.Text;
 
 namespace ClaroNet3.ViewModels
 {
-    class RecargasViewModel
+    public class RecargasViewModel:BaseViewModel
     {
+        private bool _componentesVisibles=false;
+
+        public bool ComponentesVisibles
+        {
+            get { return _componentesVisibles; }
+            set { _componentesVisibles = value; OnPropertyChanged(nameof(ComponentesVisibles)); }
+        }
+
     }
 }

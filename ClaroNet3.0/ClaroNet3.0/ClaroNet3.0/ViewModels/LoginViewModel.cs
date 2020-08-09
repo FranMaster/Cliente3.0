@@ -1,22 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ClaroNet3.Views;
+using GalaSoft.MvvmLight.Command;
+using System;
+using Xamarin.Forms;
 
 namespace ClaroNet3.ViewModels
 {
-    public class LoginViewModel:BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
-        private string _saludo;
+        #region Attributes
+        private string _Email;
+        private string _Password;
+        #endregion
+        #region Properties
 
-        public string Saludo
+        public string Email
         {
-            get { return _saludo; }
-            set { _saludo = value; OnPropertyChanged(nameof(Saludo)); }
+            get { return _Email; }
+            set { _Email = value; OnPropertyChanged(nameof(Email)); }
+        }
+
+        public string Password
+        {
+            get { return _Password; }
+            set { _Password = value; OnPropertyChanged(nameof(Password)); }
+        }
+        #endregion
+
+        #region Commands
+        public RelayCommand BtnLogIn => new RelayCommand(logIn);
+        public RelayCommand BtnLogInNoConect => new RelayCommand(TrabajarSinConexion); 
+        #endregion
+        private void logIn()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TrabajarSinConexion()
+        {
+            MainVewModel.GetInstance.Recargas = new RecargasViewModel();
+            MainVewModel.GetInstance.Recargas.ComponentesVisibles = true;
+            Application.Current.MainPage = new NavigationPage(new MasterPage());
         }
 
         public LoginViewModel()
         {
-            Saludo = "Hola Enoc";
+
         }
     }
 }

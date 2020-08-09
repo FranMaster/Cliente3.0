@@ -10,11 +10,12 @@ namespace ClaroNet3.ViewModels
     {
         #region Properties
         public LoginViewModel Login { get; set; }
+        public RecargasViewModel Recargas { get; set; }
         public ObservableCollection<ItemMenuModel> Menu { get; set; }
         #endregion
 
         #region Constructor
-        public MainVewModel()
+        private  MainVewModel()
         {
             Login = new LoginViewModel();
             LoadMenu();

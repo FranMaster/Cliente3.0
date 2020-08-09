@@ -5,25 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              BackgroundImageSource="fondo"
-             x:Class="ClaroNet3.Views.RecargasPage">
+             x:Class="ClaroNet3.Views.RecargasPage"
+             >
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <!--Cabecera-->
-            <Grid BackgroundColor="Red">
-                <Image Source="CargaNet512x512" 
-                   HeightRequest="40"
-                   Margin="10,0,0,0"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Start" />
-                <Label Text="{Binding NombreUsuario}" HorizontalOptions="End"
-                   VerticalOptions="Center" TextColor="White"
-                   FontAttributes="Bold" Margin="0,0,30,0" FontSize="Small"/>
-            </Grid>
-            <Grid Grid.Row="1">
+        <Grid BindingContext="{Binding Recargas}">              
+            <Grid >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.1*" />
@@ -61,6 +47,32 @@
                                        />
                                         <Entry HorizontalOptions="FillAndExpand"
                                         Placeholder="Monto"
+                                        Keyboard="Numeric"
+                                        HorizontalTextAlignment="Start" Text="{Binding Monto}"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame CornerRadius="15" Margin="0,0,0,10"  Padding="5"
+                                       IsVisible="{Binding ComponentesVisibles}">
+                                    <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                                        <Image HeightRequest="40" WidthRequest="40"
+                                       Source="dni"
+                                       />
+                                        <Entry HorizontalOptions="FillAndExpand"
+                                        Placeholder="Dni"
+                                        Keyboard="Numeric"
+                                        HorizontalTextAlignment="Start" Text="{Binding Monto}"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame CornerRadius="15" Margin="0,0,0,10"  Padding="5"
+                                       IsVisible="{Binding ComponentesVisibles}">
+                                    <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                                        <Image HeightRequest="40" WidthRequest="40"
+                                       Source="security"
+                                       />
+                                        <Entry HorizontalOptions="FillAndExpand"
+                                        Placeholder="Pin"
                                         Keyboard="Numeric"
                                         HorizontalTextAlignment="Start" Text="{Binding Monto}"/>
                                     </StackLayout>

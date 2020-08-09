@@ -11,7 +11,7 @@ namespace ClaroNet3.Insfrastructure
 
         public InstanceLocator()
         {
-            Main = new MainVewModel();
+            Main = MainVewModel.GetInstance;
         }
     }
 }
