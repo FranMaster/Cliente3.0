@@ -1,8 +1,12 @@
-﻿using ClaroNet3.Model;
+﻿using ClaroNet3.Interfaces;
+using ClaroNet3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using static ClaroNet3.Model.EventsUtilities;
 
 namespace ClaroNet3.ViewModels
 {
@@ -19,6 +23,15 @@ namespace ClaroNet3.ViewModels
         {
             Login = new LoginViewModel();
             LoadMenu();
+            this.Subscribe<List<string>>(Events.SmsRecieved, NuevoMensaje =>
+            {
+                Notificacion(NuevoMensaje);
+            });
+        }
+
+        private void Notificacion(List<string> Inbox)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
@@ -43,8 +56,26 @@ namespace ClaroNet3.ViewModels
         {
             Menu = new ObservableCollection<ItemMenuModel>
             {
-                new ItemMenuModel{Icon="userImg",Title="Login"}
+                new ItemMenuModel{Icon="userImg",Title="Login"},
+                new ItemMenuModel{Icon="userImg",Title="Consultar Saldo"}
             };
+        }
+
+
+        public async Task ConsultaSaldo()
+        {           
+                     
+            await Task.Run(() =>
+            DependencyService.Get<IServiceCaller>()
+                       .RealizarLLamadaSaldo("2232"));
+
+
+        }
+
+        private void MainVewModel_Mensajes(object sender, EventArgs e)
+        {
+            Application.Current.MainPage
+                .DisplayAlert("Aviso de mensaje recibido", "e", "volver");
         }
     }
 }

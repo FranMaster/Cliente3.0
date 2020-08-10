@@ -1,4 +1,5 @@
-﻿using ClaroNet3.Views;
+﻿using ClaroNet3.ViewModels;
+using ClaroNet3.Views;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -14,20 +15,18 @@ namespace ClaroNet3.Model
 
         public RelayCommand NavigateCommand => new RelayCommand(Navegar);
 
-       public void Navegar()
+       public async void Navegar()
        {
             try
             {
-                if (Title.Equals("Login"))
-                {
-
-                    Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
-                }
+                if (Title.Equals("Login"))               
+                   await  Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                if (Title.Equals("Consultar Saldo"))
+                    await MainVewModel.GetInstance.ConsultaSaldo();                     
             }
             catch (Exception e)
             {
-
-                Application.Current.MainPage.DisplayAlert(e.Message, "AVISO", "volver");
+               await Application.Current.MainPage.DisplayAlert(e.Message, "AVISO", "volver");
             }
        }
     }

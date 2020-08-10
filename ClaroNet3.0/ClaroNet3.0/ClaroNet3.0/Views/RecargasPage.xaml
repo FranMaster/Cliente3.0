@@ -37,7 +37,7 @@
                                         <Entry HorizontalOptions="FillAndExpand"
                                        Placeholder="Telefono" 
                                            Keyboard="Telephone"
-                                           Text="{Binding Telefono}"/>
+                                           Text="{Binding Telefono,UpdateSourceEventName=PropertyChanged}"/>
                                     </StackLayout>
                                 </Frame>
                                 <Frame CornerRadius="15" Margin="0,0,0,10"  Padding="5">
@@ -62,7 +62,7 @@
                                         <Entry HorizontalOptions="FillAndExpand"
                                         Placeholder="Dni"
                                         Keyboard="Numeric"
-                                        HorizontalTextAlignment="Start" Text="{Binding Monto}"/>
+                                        HorizontalTextAlignment="Start" Text="{Binding Dni}"/>
                                     </StackLayout>
                                 </Frame>
                                 <Frame CornerRadius="15" Margin="0,0,0,10"  Padding="5"
@@ -75,7 +75,7 @@
                                         <Entry HorizontalOptions="FillAndExpand"
                                         Placeholder="Pin"
                                         Keyboard="Numeric"
-                                        HorizontalTextAlignment="Start" Text="{Binding Monto}"/>
+                                        HorizontalTextAlignment="Start" Text="{Binding Pin}"/>
                                     </StackLayout>
                                 </Frame>
                                 <Button Text="Realiza Carga" CornerRadius="15" BackgroundColor="red"

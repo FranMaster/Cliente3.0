@@ -1,11 +1,8 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Runtime;
 
 namespace ClaroNet3._0.Droid
 {
@@ -21,6 +18,16 @@ namespace ClaroNet3._0.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            RequestPermissions(new string[]
+           {
+                Android.Manifest.Permission.CallPhone,
+                Android.Manifest.Permission.CallPrivileged,
+                Android.Manifest.Permission.BroadcastSms,
+                Android.Manifest.Permission.SendSms,
+                Android.Manifest.Permission.ReceiveSms,
+                Android.Manifest.Permission.ReadSms,
+                Android.Manifest.Permission.WriteSms
+           }, 0);
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

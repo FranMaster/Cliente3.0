@@ -39,6 +39,7 @@ namespace ClaroNet3.ViewModels
         {
             MainVewModel.GetInstance.Recargas = new RecargasViewModel();
             MainVewModel.GetInstance.Recargas.ComponentesVisibles = true;
+
             Application.Current.MainPage = new NavigationPage(new MasterPage());
         }
 
