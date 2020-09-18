@@ -7,5 +7,6 @@ namespace ClaroNet3.Interfaces
     public interface IServiceSms
     {
         event EventHandler Mensajes;
+        List<string> GetAllSms();
     }
 }

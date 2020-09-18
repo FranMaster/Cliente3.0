@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ClaroNet3.Model
@@ -19,10 +20,13 @@ namespace ClaroNet3.Model
        {
             try
             {
-                if (Title.Equals("Login"))               
-                   await  Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                if (Title.Equals("Login"))
+                    await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
                 if (Title.Equals("Consultar Saldo"))
-                    await MainVewModel.GetInstance.ConsultaSaldo();                     
+                    await MainVewModel.GetInstance.ConsultaSaldo();
+                if (Title.Equals("listar"))
+                    await Task.Run(() =>
+                     MainVewModel.GetInstance.ListarDatos());                     
             }
             catch (Exception e)
             {

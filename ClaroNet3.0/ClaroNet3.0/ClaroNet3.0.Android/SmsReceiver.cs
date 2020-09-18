@@ -1,6 +1,8 @@
-﻿using Android.App;
+﻿
+using Android.App;
 using Android.Content;
 using Android.Database;
+using Android.Net;
 using Android.Provider;
 using Android.Widget;
 using BurgerSpot.Droid;
@@ -17,7 +19,7 @@ namespace BurgerSpot.Droid
 
     [BroadcastReceiver(Label = "SMS Receiver")]
     [IntentFilter(new string[] { "android.provider.Telephony.SMS_RECEIVED" })]
-    public class SMSReceiver : BroadcastReceiver,IServiceSms
+    public class SMSReceiver : BroadcastReceiver, IServiceSms
     {
         public static readonly string IntentAction = "android.provider.Telephony.SMS_RECEIVED";
         public event EventHandler Mensajes;
@@ -65,6 +67,39 @@ namespace BurgerSpot.Droid
 
 
 
+        }
+
+        public List<string> GetAllSms()
+        {
+            try
+            {
+                List<string> smsList = new List<string>();
+                Context context = Android.App.Application.Context;
+                ContentResolver contentResolver = context.ContentResolver;
+                ICursor c = contentResolver.Query(Telephony.Sms.ContentUri, null, null, null, null);
+             
+                if (c != null)
+                {
+                    var totalSMS = c.Count;
+                    while (c.MoveToNext())
+                    {
+                        if (c.GetString(c.GetColumnIndexOrThrow("ADDRESS")).Equals("RecargaCLR"))
+                        {
+                            var i = c.GetLong(c.GetColumnIndexOrThrow("DATE"));
+                            var id = c.GetInt(c.GetColumnIndexOrThrow("_ID"));
+                            DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                            DateTime date = start.AddMilliseconds(i).ToLocalTime();
+                            smsList.Add($"Id:{id}.{c.GetString(c.GetColumnIndexOrThrow("BODY"))}{date.ToLongDateString()}.{date.ToShortTimeString()}");
+
+                        }
+                    }
+                }
+                return smsList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

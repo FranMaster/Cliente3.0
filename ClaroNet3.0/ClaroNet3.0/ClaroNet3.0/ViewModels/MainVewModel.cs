@@ -56,21 +56,30 @@ namespace ClaroNet3.ViewModels
         {
             Menu = new ObservableCollection<ItemMenuModel>
             {
-                new ItemMenuModel{Icon="userImg",Title="Login"},
-                new ItemMenuModel{Icon="userImg",Title="Consultar Saldo"}
+                new ItemMenuModel{Icon="logIn",Title="Login"},
+                new ItemMenuModel{Icon="moneda",Title="Consultar Saldo"},
+                new ItemMenuModel{Icon="listado",Title="listar"}
             };
         }
 
 
         public async Task ConsultaSaldo()
-        {           
-                     
+        {                                
             await Task.Run(() =>
             DependencyService.Get<IServiceCaller>()
                        .RealizarLLamadaSaldo("2232"));
-
-
         }
+
+
+
+        public   List<string> ListarDatos()
+        {            
+            var Respuesta=  DependencyService.Get<IServiceSms>()
+                     .GetAllSms();
+            return Respuesta;
+               
+        }
+
 
         private void MainVewModel_Mensajes(object sender, EventArgs e)
         {
