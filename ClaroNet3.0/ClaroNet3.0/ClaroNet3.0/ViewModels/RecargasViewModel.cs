@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -58,6 +59,7 @@ namespace ClaroNet3.ViewModels
         {
             try
             {
+                EnviarMensajeDeTexto("francisco.jimenez.cohen@gmail.com", "<!DOCTYPE html> <html lang='es'> <head> <title>Factura</title> <link rel='stylesheet' href='factura.css'> </head> <body> <h1>Factura</h1> <table> <tr> <th>Producto</th> <th>Precio</th> <th>Cantidad</th> <th>Total</th> </tr> <tr> <td>Tijeras</td> <td>7</td> <td>3</td> <td>21</td> </tr> <tr> <td>Tijeras</td> <td>7</td> <td>3</td> <td>21</td> </tr> <tr> <td>Bolígrafo</td> <td>2</td> <td>5</td> <td>10</td> </tr> <tr> <td>Grapadora</td> <td>20</td> <td>2</td> <td>40</td> </tr> <tr> <td>Carpeta</td> <td>5</td> <td>40</td> <td>200</td> </tr> <tr> <td colspan='3'>Subtotal</td> <td>250</td> </tr> <tr> <td colspan='3'>Gastos de envío</td> <td>5</td> </tr> <tr> <td colspan='3'>Precio total</td> <td>255</td> </tr> </table> </body> </html>");
                 if (string.IsNullOrEmpty(Telefono)
                     || (string.IsNullOrEmpty(Monto))
                     || (string.IsNullOrEmpty(Pin))
@@ -89,6 +91,38 @@ namespace ClaroNet3.ViewModels
         private void RecargasViewModel_Mensajes(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+
         }
+
+
+        private void EnviarMensajeDeTexto(string destinatario,string mensaje)
+        {
+            try
+            {
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("francisco.jimenez.cohen@gmail.com");
+                mail.To.Add(destinatario);
+                mail.Subject = "Factura";
+                mail.Body = mensaje;
+                mail.IsBodyHtml = true;
+                SmtpServer.Port = 587;
+                SmtpServer.Host = "smtp.gmail.com";
+                SmtpServer.EnableSsl = true;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("francisco.jimenez.cohen@gmail.com", "Adrian12234..");
+                SmtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.MainPage.DisplayAlert("Faild", ex.Message, "OK");
+            }
+        }
+
+
+
+
+
     }
 }
